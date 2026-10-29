@@ -11,6 +11,7 @@
 #include <os2.h>
 
 #include "shapewin.h"
+#include "uni.h"
 
 #include "osmulti2.h"
 #include "osmulres.h"
@@ -55,149 +56,11 @@ HPS     hpsBalloon = NULLHANDLE ;
 HBITMAP hbmBalloon = NULLHANDLE ;
 
 /*
- * Mssages from Resource
+ * Messages come from the language file at the time they are drawn
+ * (ostext.c), so a change of language takes effect at once.
  */
 
-static  PUCHAR  strNade  = NULL ;
-static  PUCHAR  strFuni  = NULL ;
-static  PUCHAR  strPsyu  = NULL ;
-static  PUCHAR  strNade1 = NULL ;
-static  PUCHAR  strNade2 = NULL ;
-static  PUCHAR  strNade3 = NULL ;
-static  PUCHAR  strNade4 = NULL ;
-static  PUCHAR  strFuni1 = NULL ;
-static  PUCHAR  strFuni2 = NULL ;
-static  PUCHAR  strFuni3 = NULL ;
-static  PUCHAR  strFuni4 = NULL ;
-
-static  UCHAR   buff[256] ;
-
-static  void    freeMessages(void)
-{
-    if (strNade) free(strNade) ;
-    if (strFuni) free(strFuni) ;
-    if (strPsyu) free(strPsyu) ;
-    
-    if (strNade1) free(strNade1) ;
-    if (strNade2) free(strNade2) ;
-    if (strNade3) free(strNade3) ;
-    if (strNade4) free(strNade4) ;
-
-    if (strFuni1) free(strFuni1) ;
-    if (strFuni2) free(strFuni2) ;
-    if (strFuni3) free(strFuni3) ;
-    if (strFuni4) free(strFuni4) ;
-    
-    strNade = strFuni = strPsyu = NULL ;
-    strNade1 = strNade2 = strNade3 = strNade4 = NULL ;
-    strFuni1 = strFuni2 = strFuni3 = strFuni4 = NULL ;
-}
-
-static  BOOL    loadMessages(HAB hab)
-{
-    ULONG   idNade, idFuni, idPsyu ;
-    ULONG   idNade1, idNade2, idNade3, idNade4 ;
-    ULONG   idFuni1, idFuni2, idFuni3, idFuni4 ;
-    
-    switch (ProgramLang) {
-    case NLS_JA :
-        idNade  = IDS_NADE  ;
-	idFuni  = IDS_FUNI  ;
-	idPsyu  = IDS_PSYU  ;
-	idNade1 = IDS_NADE1 ;
-	idNade2 = IDS_NADE2 ;
-	idNade3 = IDS_NADE3 ;
-	idNade4 = IDS_NADE4 ;
-	idFuni1 = IDS_FUNI1 ;
-	idFuni2 = IDS_FUNI2 ;
-	idFuni3 = IDS_FUNI3 ;
-	idFuni4 = IDS_FUNI4 ;
-        break ;
-    case NLS_EN :
-        idNade  = IDSE_NADE  ;
-	idFuni  = IDSE_FUNI  ;
-	idPsyu  = IDSE_PSYU  ;
-	idNade1 = IDSE_NADE1 ;
-	idNade2 = IDSE_NADE2 ;
-	idNade3 = IDSE_NADE3 ;
-	idNade4 = IDSE_NADE4 ;
-	idFuni1 = IDSE_FUNI1 ;
-	idFuni2 = IDSE_FUNI2 ;
-	idFuni3 = IDSE_FUNI3 ;
-	idFuni4 = IDSE_FUNI4 ;
-        break ;
-    default     :
-        idNade  = IDSE_NADE  ;
-	idFuni  = IDSE_FUNI  ;
-	idPsyu  = IDSE_PSYU  ;
-	idNade1 = IDSE_NADE1 ;
-	idNade2 = IDSE_NADE2 ;
-	idNade3 = IDSE_NADE3 ;
-	idNade4 = IDSE_NADE4 ;
-	idFuni1 = IDSE_FUNI1 ;
-	idFuni2 = IDSE_FUNI2 ;
-	idFuni3 = IDSE_FUNI3 ;
-	idFuni4 = IDSE_FUNI4 ;
-        break ;
-    }
-    
-    if (strNade == NULL) {
-        WinLoadString(hab, NULLHANDLE, idNade, 256, buff) ;
-	strNade = strdup(buff) ;
-    }
-    if (strFuni == NULL) {
-        WinLoadString(hab, NULLHANDLE, idFuni, 256, buff) ;
-	strFuni = strdup(buff) ;
-    }
-    if (strPsyu == NULL) {
-        WinLoadString(hab, NULLHANDLE, idPsyu, 256, buff) ;
-	strPsyu = strdup(buff) ;
-    }
-    if (strNade1 == NULL) {
-        WinLoadString(hab, NULLHANDLE, idNade1, 256, buff) ;
-	strNade1 = strdup(buff) ;
-    }
-    if (strNade2 == NULL) {
-        WinLoadString(hab, NULLHANDLE, idNade2, 256, buff) ;
-	strNade2 = strdup(buff) ;
-    }
-    if (strNade3 == NULL) {
-        WinLoadString(hab, NULLHANDLE, idNade3, 256, buff) ;
-	strNade3 = strdup(buff) ;
-    }
-    if (strNade4 == NULL) {
-        WinLoadString(hab, NULLHANDLE, idNade4, 256, buff) ;
-	strNade4 = strdup(buff) ;
-    }
-
-    if (strFuni1 == NULL) {
-        WinLoadString(hab, NULLHANDLE, idFuni1, 256, buff) ;
-	strFuni1 = strdup(buff) ;
-    }
-    if (strFuni2 == NULL) {
-        WinLoadString(hab, NULLHANDLE, idFuni2, 256, buff) ;
-	strFuni2 = strdup(buff) ;
-    }
-    if (strFuni3 == NULL) {
-        WinLoadString(hab, NULLHANDLE, idFuni3, 256, buff) ;
-	strFuni3 = strdup(buff) ;
-    }
-    if (strFuni4 == NULL) {
-        WinLoadString(hab, NULLHANDLE, idFuni4, 256, buff) ;
-	strFuni4 = strdup(buff) ;
-    }
-    
-    if (strNade == NULL || strFuni == NULL || strPsyu == NULL) {
-        return FALSE ;
-    }
-    if (strNade1 == NULL || strNade2 == NULL || strNade3 == NULL || strNade4 == NULL) {
-        return FALSE ;
-    }
-    if (strFuni1 == NULL || strFuni2 == NULL || strFuni3 == NULL || strFuni4 == NULL) {
-        return FALSE ;
-    }
-    return TRUE ;
-}
+#define TALK_PELS       13      /* character size   */
 
 /*
  * balloonDispose - dispose resources for Balloon Message
@@ -205,8 +68,6 @@ static  BOOL    loadMessages(HAB hab)
 
 void    balloonDispose(void)
 {
-    freeMessages() ;
-    
     if (hbmBalloon != NULLHANDLE) {
         GpiDeleteBitmap(hbmBalloon) ;
 	hbmBalloon = NULLHANDLE ;
@@ -233,11 +94,6 @@ BOOL    balloonCreate(HAB hab)
     BITMAPINFOHEADER2   bmi ;
     POINTL  apt[TXTBOX_COUNT] ;
 
-    if (loadMessages(hab) != TRUE) {
-        freeMessages() ;
-	return FALSE ;
-    }
-    
     /*
      * Create Memory DC/PS for Message Ballooon
      */
@@ -312,15 +168,12 @@ BOOL    balloonCreate(HAB hab)
     talkSiz.cy = talkRct.yTop - talkRct.yBottom ;
 
     /*
-     * Query Text Size
+     * Text size (the line height is measured again for the language font)
      */
-     
-    GpiQueryTextBox(hpsBalloon, 1, "M", TXTBOX_COUNT, apt) ;
-    talkBox.cx = apt[TXTBOX_TOPRIGHT].x - apt[TXTBOX_TOPLEFT].x   ;
-    talkBox.cy = apt[TXTBOX_TOPLEFT].y - apt[TXTBOX_BOTTOMLEFT].y ;
-    
-    TRACE("TextBox %d x %d\n", talkBox.cx, talkBox.cy) ;
-    
+
+    talkBox.cx = TALK_PELS ;
+    talkBox.cy = TALK_PELS + 3 ;
+
     talkPos.x = talkRct.xLeft ;
     talkPos.y = talkRct.yTop  ;
     
@@ -443,7 +296,20 @@ static  void    scrollup(void)
     GpiBox(hpsBalloon, DRO_FILL, &pt2, 0, 0) ;
 }
 
-static  void    drawLine(PUCHAR str, int len)
+static  BOOL    uniOn = FALSE ;     /* the language font is selected    */
+
+static  int     textWidth(const char *str, int len)
+{
+    POINTL  apt[TXTBOX_COUNT] ;
+
+    if (uniOn) {
+        return uni_width(hpsBalloon, str, len) ;
+    }
+    GpiQueryTextBox(hpsBalloon, len, (PCH) str, TXTBOX_COUNT, apt) ;
+    return (int) (apt[TXTBOX_TOPRIGHT].x - apt[TXTBOX_TOPLEFT].x) ;
+}
+
+static  void    drawLine(const char *str, int len)
 {
     talkPos.x = talkRct.xLeft ;
     if ((talkPos.y - talkBox.cy) >= talkRct.yBottom) {
@@ -452,83 +318,71 @@ static  void    drawLine(PUCHAR str, int len)
         scrollup() ;
     }
     GpiSetColor(hpsBalloon, TALK_CLR_CHR) ;
-    GpiCharStringAt(hpsBalloon, &talkPos, len, str) ;
-}
-
-#define iskanji(c)  (((c)>0x80 && (c)<0xa0) || ((c)>=0xe0 && (c)<0xfd))
-
-static  void    drawWrapJa(PUCHAR str, int len)
-{
-    int     n, bump, wid ;
-    POINTL  apt[TXTBOX_COUNT] ;
-
-    for (n = 0 ; len > 0 && n < len ; ) {
-        if (iskanji(str[n])) {
-	    bump = 2 ;
-	} else {
-	    bump = 1 ;
-	}
-        GpiQueryTextBox(hpsBalloon, (n + bump), str, TXTBOX_COUNT, apt) ;
-        wid = apt[TXTBOX_TOPRIGHT].x - apt[TXTBOX_TOPLEFT].x ;
-	if (wid < talkSiz.cx) {
-	    n += bump ;
-	    continue  ;
-	}
-        drawLine(str, n) ;
-        str += n ;
-        len -= n ;
-        n = 0 ;
-    }
-    if (n > 0) {
-        drawLine(str, n) ;
-    }
-}
-
-static  void    drawWrapEn(PUCHAR str, int len)
-{
-    int     n, bump, wid ;
-    POINTL  apt[TXTBOX_COUNT] ;
-
-    for (n = 0, bump = 0 ; len > 0 && (n + bump) < len ; ) {
-        if (! isspace(str[n + bump])) {
-            bump += 1 ;
-	    continue ;
-	}
-        GpiQueryTextBox(hpsBalloon, (n + bump), str, TXTBOX_COUNT, apt) ;
-        wid = apt[TXTBOX_TOPRIGHT].x - apt[TXTBOX_TOPLEFT].x ;
-	if (wid < talkSiz.cx) {
-	    n += bump ;
-	    bump = 1  ;
-	    continue  ;
-	}
-        drawLine(str, n) ;
-        str += n ;
-	len -= n ;
-        n = bump ;
-	bump = 1 ;
-    }
-    if (n > 0) {
-        drawLine(str, n) ;
-    }
-}
-
-static  void    drawMessage(PUCHAR str)
-{
-    int     len, wid ;
-    POINTL  apt[TXTBOX_COUNT] ;
-
-    len = strlen(str) ;
-    
-    GpiQueryTextBox(hpsBalloon, len, str, TXTBOX_COUNT, apt) ;
-    wid = apt[TXTBOX_TOPRIGHT].x - apt[TXTBOX_TOPLEFT].x ;
-    
-    if (wid < talkSiz.cx) {
-        drawLine(str, len) ;
-    } else if (ProgramLang == NLS_JA) {
-        drawWrapJa(str, len) ;
+    if (uniOn) {
+        uni_draw(hpsBalloon, talkPos.x, talkPos.y, str, len) ;
     } else {
-        drawWrapEn(str, len) ;
+        GpiCharStringAt(hpsBalloon, &talkPos, len, (PCH) str) ;
     }
+}
+
+/*
+ * drawWrap - draw a text on as many lines as needed; breaks at the last
+ * space when there is one, else between two characters (UTF-8 aware)
+ */
+
+static  void    drawWrap(const char *str, int len)
+{
+    int     start = 0, n, lastSp, used ;
+
+    while (start < len) {
+        n = start ;
+        lastSp = -1 ;
+        while (n < len) {
+            used = uniOn ? utf8_seqlen((unsigned char) str[n]) : 1 ;
+            if (n + used > len) {
+                used = len - n ;
+            }
+            if (n > start && textWidth(str + start, n + used - start) > talkSiz.cx) {
+                break ;
+            }
+            if (str[n] == ' ') {
+                lastSp = n ;
+            }
+            n += used ;
+        }
+        if (n >= len) {
+            drawLine(str + start, len - start) ;
+            break ;
+        }
+        if (lastSp > start) {
+            drawLine(str + start, lastSp - start) ;
+            start = lastSp + 1 ;
+        } else {
+            drawLine(str + start, n - start) ;
+            start = n ;
+        }
+    }
+}
+
+static  void    drawMessage(int strId)
+{
+    ULONG       ocp ;
+    int         len ;
+    const char  *str ;
+
+    uniOn = uni_begin(hpsBalloon, osFace(), TALK_PELS, &ocp) ? TRUE : FALSE ;
+    if (uniOn) {
+        str = osTrw(strId, &len) ;
+        talkBox.cy = uni_height(hpsBalloon) ;
+    } else {
+        str = osTr(strId) ;             /* no font: code page text  */
+        len = strlen(str) ;
+        talkBox.cy = TALK_PELS + 3 ;
+    }
+    drawWrap(str, len) ;
+    uni_end(hpsBalloon, ocp) ;
+    uniOn = FALSE ;
+
     WinSendMsg(hwndTalk, SHAPEWIN_MSG_UPDATE, MPFROMP(&talkRct), NULL) ;
 }
 
@@ -542,18 +396,18 @@ static  BOOL    isMail = FALSE ;
 
 void    balloonNade(void)
 {
-    drawMessage(strNade) ;
+    drawMessage(STR_B_NADE) ;
     
     countNade += 1 ;
     
     if (countNade == 4) {
-        drawMessage(strNade1) ;
+        drawMessage(STR_B_NADE1) ;
     } else if (countNade == 8) {
-        drawMessage(strNade2) ;
+        drawMessage(STR_B_NADE2) ;
     } else if (countNade == 12) {
-        drawMessage(strNade3) ;
+        drawMessage(STR_B_NADE3) ;
     } else if ((countNade % 4) == 0) {
-        drawMessage(strNade4) ;
+        drawMessage(STR_B_NADE4) ;
     }
 
     if (! visible) {
@@ -563,18 +417,18 @@ void    balloonNade(void)
 
 void    balloonFuni(void)
 {
-    drawMessage(strFuni) ;
+    drawMessage(STR_B_FUNI) ;
     
     countFuni += 1 ;
     
     if (countFuni == 4) {
-        drawMessage(strFuni1) ;
+        drawMessage(STR_B_FUNI1) ;
     } else if (countFuni == 8) {
-        drawMessage(strFuni2) ;
+        drawMessage(STR_B_FUNI2) ;
     } else if (countFuni == 12) {
-        drawMessage(strFuni3) ;
+        drawMessage(STR_B_FUNI3) ;
     } else if (countFuni == 16) {   /* 20 > causes 'psyu'   */
-        drawMessage(strFuni4) ;
+        drawMessage(STR_B_FUNI4) ;
     }
 
     if (! visible) {
@@ -584,7 +438,7 @@ void    balloonFuni(void)
 
 void    balloonPsyu(void)
 {
-    drawMessage(strPsyu) ;
+    drawMessage(STR_B_PSYU) ;
 
     if (! visible) {
         balloonShow() ;

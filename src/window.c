@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define INCL_PM
 #include <os2.h>
@@ -106,16 +107,10 @@ static  void    contextMenu(void)
     POINTL  pt   ;
     SWP     swp  ;
     ULONG   opts ;
-    ULONG   idMenu ;
-    
-    switch (ProgramLang) {
-        case NLS_JA : idMenu = IDM_POPUP  ; break ;
-	case NLS_EN : idMenu = IDM_POPUPE ; break ;
-	default     : idMenu = IDM_POPUPE ; break ;
-    }
-    
+
     if (hwndPopup == NULLHANDLE) {
-        hwndPopup = WinLoadMenu(hwndFrame, NULLHANDLE, idMenu) ;
+        hwndPopup = WinLoadMenu(hwndFrame, NULLHANDLE, IDM_POPUP) ;
+        osPopupApply(hwndPopup) ;       /* texts of the active language */
     }
     if (hwndPopup == NULLHANDLE) {
         TRACE("failed to load popup menu\n") ;
@@ -147,8 +142,18 @@ static  PFNWP   pfnFrame ;      /* original frame window procedure  */
 static MRESULT EXPENTRY procFrame(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
 {
     PSWP    pswp ;
+    BOOL    handled ;
+    MRESULT mr ;
 
     switch (msg) {
+
+    case WM_MEASUREITEM :       /* owner drawn menu items (Unicode texts)   */
+    case WM_DRAWITEM :
+        mr = osOwnerMsg(msg, mp2, &handled) ;
+        if (handled) {
+            return mr ;
+        }
+        break ;
 
     case WM_ADJUSTWINDOWPOS :
         pswp = (PSWP) PVOIDFROMMP(mp1) ;
@@ -182,6 +187,13 @@ static MRESULT EXPENTRY procFrame(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
         return (MRESULT) 0 ;
 
     case WM_COMMAND :
+        if (SHORT1FROMMP(mp1) >= IDM_LANG_BASE &&
+                SHORT1FROMMP(mp1) < IDM_LANG_BASE + osLangCount()) {
+            osLangSelect(SHORT1FROMMP(mp1) - IDM_LANG_BASE) ;
+            osPopupApply(hwndPopup) ;
+            profileSave(WinQueryAnchorBlock(hwnd)) ;
+            return (MRESULT) 0 ;
+        }
         switch (SHORT1FROMMP(mp1)) {
 
 	case IDM_SETUP :

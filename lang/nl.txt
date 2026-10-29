@@ -1,0 +1,32 @@
+# Osuwari Multi language file - UTF-8, KEY=value, \n = line break
+# "~" marks the mnemonic letter; for scripts without Latin letters add the Latin
+# mnemonic in parentheses, e.g. (~O).  Missing keys fall back to English.
+LANG_NAME=Nederlands
+LANG_ENGLISH=Dutch
+FONT=Times New Roman MT 30,Droid Sans Combined
+
+MENU_OPTION=~Opties...
+MENU_LANGUAGE=~Taal
+MENU_ABOUT=~Info...
+MENU_EXIT=A~fsluiten
+SET_TITLE=Zittende Multi - opties
+SET_MSG=berichten tonen
+SET_SND=geluiden gebruiken
+SET_POS=zitpositie
+BTN_OK=OK
+BTN_CANCEL=Annuleren
+ABOUT_TITLE=Zittende Multi voor OS/2 PM, versie 1.07
+ABOUT_TEXT=Oorspronkelijk personage van Leaf\n  http://leaf.aquaplus.co.jp/\nOorspronkelijke Windows-versie (Win32)\n  http://www.vc-net.ne.jp/~yoshy/to_heart/index.html#osmulti\n  by yoshy@vc-net.ne.jp\nGebaseerd op de X-versie\n  http://www01.u-page.so-net.ne.jp/ka2/nakanita/multi/xosmulti.html\n  by nakanita@ka2.so-net.ne.jp\nDe OS/2 PM-versie staat op\n  http://www.sra.co.jp/people/akira/os2/osmulti/index.html\nOpen Watcom-port en meertalige ondersteuning: OS2World, 2026
+ERR_BITMAPS=De bitmaps konden niet worden geladen
+ERR_WINDOWS=De vensters konden niet worden gemaakt
+B_NADE=*nade*
+B_FUNI=*funi*
+B_PSYU=*psyuuuuuu-------*
+B_NADE1=Wat ben ik blij!
+B_NADE2=Aai me nog meer!
+B_NADE3=Meer, meer, aai me!
+B_NADE4=Meer, meer, meer, aai me!
+B_FUNI1=..Oh! wat?!..
+B_FUNI2=......
+B_FUNI3=.......
+B_FUNI4=........

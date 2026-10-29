@@ -1,5 +1,5 @@
 
-        Sitting (Osuwari) Multi for OS/2 PM, version 1.06
+        Sitting (Osuwari) Multi for OS/2 PM, version 1.07
 	
                             2001/04/01 by akira@sra.co.jp
 
@@ -64,19 +64,26 @@ License
 Install
 
     Archive contains full source codes (including shape window library)
-    and program binary.  If you use binary only, then copy
+    and program binary.  If you use binary only, copy
 
         osmulti2.exe
+        lang\*.txt   (the language files, in a "lang" folder next to
+                      the .exe)
 
-    to a directory in PATH and invoke from command line, or, place it as
-    some directory and create program object for its.  For non-japanses
-    user, you need command line option 'en' to change message, menu, 
-    dialog into english.  So start this program as
-    
-        osmulti2 en
+    to a directory and start osmulti2.exe, or create a program object
+    for it.  The language is chosen from the "Language" submenu of the
+    popup menu (right mouse button), or with a language code on the
+    command line:
 
-    This program was written for EMX/GCC.  You need EMX runtime (0.9c
-    or later) to run this program.
+        osmulti2 ja         Japanese
+        osmulti2 es         Spanish    (en, es, nl, de, fr, it, ja, ko,
+                                        ru, el, zh_CN, zh_TW)
+
+    Without a command line code the language saved in osmulti2.ini is
+    used, else one that fits the system code page (English if none).
+
+    The OS2World build (2026) is built with Open Watcom 2.0 and needs
+    no EMX runtime.  See README.md for the build instructions.
 
 How to use
 
@@ -98,6 +105,29 @@ How to use
         Exit        Exit program
 
 Updates History
+
+    1.07 (OS2World build, 2026)    Open Watcom port, multilingual
+
+        - Builds with Open Watcom 2.0 (makefile.wat / compile-wat.cmd);
+          the EMX/GCC Makefile was removed.
+        - Menus, dialogs, About text and the messages of 'Multi' come
+          from UTF-8 language files (lang\*.txt) instead of resources:
+          12 languages (English, Spanish, Dutch, German, French,
+          Italian, Japanese, Korean, Russian, Greek, Simplified and
+          Traditional Chinese).  Text is drawn through GPI code page
+          1208 (UTF-8); anything the system code page cannot show is
+          drawn by the program (owner drawn menu items, own controls).
+          More languages can be added by dropping a new file in lang\.
+        - New "Language" submenu in the popup menu; the choice is saved
+          in osmulti2.ini.  A language code on the command line
+          (ja, en, es, ...) overrides it.
+        - Face fix: the whole picture is now redrawn for each face
+          change (the old 'full' behaviour is the default, because the
+          partial redraw shows a piece of the body instead of the face
+          with Open Watcom builds).  The old behaviour is available as
+          the 'part' option.
+        - Fixed swapped coordinates in the repaint rectangle of the
+          partial redraw.
 
     1.06        More fix for hang after screen lock
     
@@ -178,7 +208,8 @@ Known Problems
 
     'Object Desktop' causes problems, a part of bitmap is not redrawn.
     
-    If face of the Multi was broken (may be Warp4), try 'full' option.
+    If face of the Multi was broken, use the 'full' option (default in
+    the OS2World build; 'part' selects the old partial redraw).
 
 Acknowledges
 

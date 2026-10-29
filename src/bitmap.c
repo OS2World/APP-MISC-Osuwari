@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define INCL_PM
 #include <os2.h>
@@ -309,8 +310,8 @@ void    bitmapDrawFace(HBITMAP hbm)
         apt[3].y =  FACE_Y2 ;
 
         rect.xLeft   =  FACE_X1 ;
-        rect.xRight  =  FACE_Y1 ;
-        rect.yBottom =  FACE_X2 ;
+        rect.xRight  =  FACE_X2 ;
+        rect.yBottom =  FACE_Y1 ;
         rect.yTop    =  FACE_Y2 ;
     } else {
         apt[0].x = 0 ;

@@ -20,13 +20,12 @@ extern  UCHAR   ProgramName[] ;
 extern  UCHAR   ProfilePath[] ;
 
 /*
- * National Language Supports
+ * National Language Supports (see ostext.c; texts in lang\*.txt)
  */
 
-#define NLS_JA      0
-#define NLS_EN      1
+#include "ostext.h"
 
-extern  int     ProgramLang ;
+extern  char    ProfileLang[] ;     /* language code saved in the profile */
 
 /*
  * Hack for display trouble

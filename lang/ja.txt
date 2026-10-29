@@ -1,0 +1,32 @@
+# Osuwari Multi language file - UTF-8, KEY=value, \n = line break
+# "~" marks the mnemonic letter; for scripts without Latin letters add the Latin
+# mnemonic in parentheses, e.g. (~O).  Missing keys fall back to English.
+LANG_NAME=日本語
+LANG_ENGLISH=Japanese
+FONT=Droid Sans Combined,Monotype Sans Duospace WT J,Times New Roman WT J
+
+MENU_OPTION=設定(~O)
+MENU_LANGUAGE=言語(~L)
+MENU_ABOUT=情報(~A)
+MENU_EXIT=終了(~X)
+SET_TITLE=お座りマルチ - 設定
+SET_MSG=メッセージを表示する
+SET_SND=効果音をならす
+SET_POS=マルチの座る位置
+BTN_OK=OK
+BTN_CANCEL=キャンセル
+ABOUT_TITLE=お座りマルチ for OS/2 PM, Version 1.07
+ABOUT_TEXT=原作キャラクター: Leaf\n  http://leaf.aquaplus.co.jp/\nオリジナル Windows (Win32) 版\n  http://www.vc-net.ne.jp/~yoshy/to_heart/index.html#osmulti\n  by 「Yoshy」さん、「カトキムチ」さん\nX 版がベース\n  http://www01.u-page.so-net.ne.jp/ka2/nakanita/multi/xosmulti.html\n  by 「なかなか」さん\nOS/2 PM 版の配布場所\n  http://www.sra.co.jp/people/akira/os2/osmulti/index.html\nOpen Watcom 移植と多言語対応: OS2World, 2026
+ERR_BITMAPS=ビットマップを読み込めませんでした
+ERR_WINDOWS=ウィンドウを作成できませんでした
+B_NADE=なで、
+B_FUNI=ふに、
+B_PSYU=「プシューーーーーー」
+B_NADE1=「う、うれしいです。」
+B_NADE2=「もっと、なでなでしてください」
+B_NADE3=「もっともっと、なでなでしてください」
+B_NADE4=「もっともっともっと、なでなでしてください」
+B_FUNI1=「あ、あの何を．．．」
+B_FUNI2=「．．．．．．」
+B_FUNI3=「．．．．．．．」
+B_FUNI4=「．．．．．．．．」

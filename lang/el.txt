@@ -1,0 +1,32 @@
+# Osuwari Multi language file - UTF-8, KEY=value, \n = line break
+# "~" marks the mnemonic letter; for scripts without Latin letters add the Latin
+# mnemonic in parentheses, e.g. (~O).  Missing keys fall back to English.
+LANG_NAME=Ελληνικά
+LANG_ENGLISH=Greek
+FONT=Times New Roman MT 30,Droid Sans Combined
+
+MENU_OPTION=Επιλογές(~O)...
+MENU_LANGUAGE=Γλώσσα(~L)
+MENU_ABOUT=Σχετικά(~A)...
+MENU_EXIT=Έξοδος(~X)
+SET_TITLE=Καθιστή Multi - επιλογές
+SET_MSG=εμφάνιση μηνυμάτων
+SET_SND=χρήση ήχων
+SET_POS=θέση καθίσματος
+BTN_OK=OK
+BTN_CANCEL=Άκυρο
+ABOUT_TITLE=Καθιστή Multi για OS/2 PM, έκδοση 1.07
+ABOUT_TEXT=Αρχικός χαρακτήρας: Leaf\n  http://leaf.aquaplus.co.jp/\nΑρχική έκδοση Windows (Win32)\n  http://www.vc-net.ne.jp/~yoshy/to_heart/index.html#osmulti\n  by yoshy@vc-net.ne.jp\nΒασισμένο στην έκδοση για X\n  http://www01.u-page.so-net.ne.jp/ka2/nakanita/multi/xosmulti.html\n  by nakanita@ka2.so-net.ne.jp\nΗ έκδοση OS/2 PM βρίσκεται στο\n  http://www.sra.co.jp/people/akira/os2/osmulti/index.html\nΠόρτα Open Watcom και πολυγλωσσική υποστήριξη: OS2World, 2026
+ERR_BITMAPS=Αποτυχία φόρτωσης των bitmap
+ERR_WINDOWS=Αποτυχία δημιουργίας των παραθύρων
+B_NADE=*nade*
+B_FUNI=*funi*
+B_PSYU=*psyuuuuuu-------*
+B_NADE1=Είμαι τόσο χαρούμενη!
+B_NADE2=Χάιδεψέ με κι άλλο!
+B_NADE3=Κι άλλο, κι άλλο, χάιδεψέ με!
+B_NADE4=Κι άλλο, κι άλλο, κι άλλο, χάιδεψέ με!
+B_FUNI1=..Ω! τι;!..
+B_FUNI2=......
+B_FUNI3=.......
+B_FUNI4=........

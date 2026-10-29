@@ -152,6 +152,10 @@ static MRESULT EXPENTRY procSetup(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
     switch (msg) {
 
     case WM_INITDLG :
+        WinSetWindowText(hwnd, (PSZ) osTr(STR_SET_TITLE)) ;
+        osSetLabel(hwnd, IDD_SMSG_L, STR_SET_MSG, 0, IDD_SMSG) ;
+        osSetLabel(hwnd, IDD_SSND_L, STR_SET_SND, 0, IDD_SSND) ;
+        osSetLabel(hwnd, IDD_SPOS_L, STR_SET_POS, 0, 0) ;
         dialogAtMouse(hwnd) ;
 	sliderIni(hwnd) ;
 	setData(hwnd) ;
@@ -172,6 +176,12 @@ static MRESULT EXPENTRY procSetup(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
 	}
 
     case WM_CONTROL :
+        if (SHORT2FROMMP(mp1) == BN_PAINT &&
+                (SHORT1FROMMP(mp1) == DID_OK || SHORT1FROMMP(mp1) == DID_CANCEL)) {
+            osDrawButton((PUSERBUTTON) PVOIDFROMMP(mp2),
+                (SHORT1FROMMP(mp1) == DID_OK) ? STR_BTN_OK : STR_BTN_CANCEL) ;
+            return (MRESULT) 0 ;
+        }
         if (SHORT1FROMMP(mp1) == IDD_SPOS) {
 	    if (SHORT2FROMMP(mp1) == SLN_CHANGE) {
 	        sliderUpd(hwnd) ;
@@ -190,16 +200,8 @@ static MRESULT EXPENTRY procSetup(HWND hwnd, ULONG msg, MPARAM mp1, MPARAM mp2)
  
 void    setupDialog(void)
 {
-    ULONG   idSetup ;
-
-    switch (ProgramLang) {
-        case NLS_JA : idSetup = IDD_SETUP  ; break ;
-	case NLS_EN : idSetup = IDD_SETUPE ; break ;
-	default     : idSetup = IDD_SETUPE ; break ;
-    }
-    
-    WinDlgBox(HWND_DESKTOP, NULLHANDLE, 
-                procSetup, NULLHANDLE, idSetup, NULL) ;
+    WinDlgBox(HWND_DESKTOP, NULLHANDLE,
+                procSetup, NULLHANDLE, IDD_SETUP, NULL) ;
 
     trackFocus(WinQueryAnchorBlock(HWND_DESKTOP)) ;     /* update multi */
 }

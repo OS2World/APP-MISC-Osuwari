@@ -1,0 +1,32 @@
+# Osuwari Multi language file - UTF-8, KEY=value, \n = line break
+# "~" marks the mnemonic letter; for scripts without Latin letters add the Latin
+# mnemonic in parentheses, e.g. (~O).  Missing keys fall back to English.
+LANG_NAME=한국어
+LANG_ENGLISH=Korean
+FONT=Droid Sans Combined,Monotype Sans Duospace WT J,Times New Roman WT J
+
+MENU_OPTION=설정(~O)...
+MENU_LANGUAGE=언어(~L)
+MENU_ABOUT=정보(~A)...
+MENU_EXIT=종료(~X)
+SET_TITLE=앉은 멀티 - 설정
+SET_MSG=메시지 표시
+SET_SND=효과음 사용
+SET_POS=앉는 위치
+BTN_OK=확인
+BTN_CANCEL=취소
+ABOUT_TITLE=앉은 멀티 for OS/2 PM, 버전 1.07
+ABOUT_TEXT=원작 캐릭터: Leaf\n  http://leaf.aquaplus.co.jp/\n원본 Windows(Win32) 버전\n  http://www.vc-net.ne.jp/~yoshy/to_heart/index.html#osmulti\n  by yoshy@vc-net.ne.jp\nX 버전 기반\n  http://www01.u-page.so-net.ne.jp/ka2/nakanita/multi/xosmulti.html\n  by nakanita@ka2.so-net.ne.jp\nOS/2 PM 버전 위치\n  http://www.sra.co.jp/people/akira/os2/osmulti/index.html\nOpen Watcom 포팅 및 다국어 지원: OS2World, 2026
+ERR_BITMAPS=비트맵을 불러올 수 없습니다
+ERR_WINDOWS=창을 만들 수 없습니다
+B_NADE=*nade*
+B_FUNI=*funi*
+B_PSYU=*psyuuuuuu-------*
+B_NADE1=너무 기뻐요!
+B_NADE2=더 쓰다듬어 주세요!
+B_NADE3=더, 더 쓰다듬어 주세요!
+B_NADE4=더, 더, 더 쓰다듬어 주세요!
+B_FUNI1=..앗! 뭐죠?!..
+B_FUNI2=......
+B_FUNI3=.......
+B_FUNI4=........

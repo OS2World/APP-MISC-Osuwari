@@ -1,0 +1,32 @@
+# Osuwari Multi language file - UTF-8, KEY=value, \n = line break
+# "~" marks the mnemonic letter; for scripts without Latin letters add the Latin
+# mnemonic in parentheses, e.g. (~O).  Missing keys fall back to English.
+LANG_NAME=Français
+LANG_ENGLISH=French
+FONT=Times New Roman MT 30,Droid Sans Combined
+
+MENU_OPTION=~Options...
+MENU_LANGUAGE=~Langue
+MENU_ABOUT=À ~propos...
+MENU_EXIT=~Quitter
+SET_TITLE=Multi assise - options
+SET_MSG=afficher les messages
+SET_SND=utiliser les sons
+SET_POS=position assise
+BTN_OK=OK
+BTN_CANCEL=Annuler
+ABOUT_TITLE=Multi assise pour OS/2 PM, version 1.07
+ABOUT_TEXT=Personnage original de Leaf\n  http://leaf.aquaplus.co.jp/\nVersion Windows (Win32) originale\n  http://www.vc-net.ne.jp/~yoshy/to_heart/index.html#osmulti\n  by yoshy@vc-net.ne.jp\nBasé sur la version X\n  http://www01.u-page.so-net.ne.jp/ka2/nakanita/multi/xosmulti.html\n  by nakanita@ka2.so-net.ne.jp\nLa version OS/2 PM se trouve sur\n  http://www.sra.co.jp/people/akira/os2/osmulti/index.html\nPortage Open Watcom et support multilingue : OS2World, 2026
+ERR_BITMAPS=Impossible de charger les bitmaps
+ERR_WINDOWS=Impossible de créer les fenêtres
+B_NADE=*nade*
+B_FUNI=*funi*
+B_PSYU=*psyuuuuuu-------*
+B_NADE1=Je suis si heureuse !
+B_NADE2=Caresse-moi encore !
+B_NADE3=Encore, encore, caresse-moi !
+B_NADE4=Encore, encore, encore, caresse-moi !
+B_FUNI1=..Oh ! quoi ?!..
+B_FUNI2=......
+B_FUNI3=.......
+B_FUNI4=........

@@ -19,6 +19,8 @@ extern  int     posRatio ;      /* track.c      */
 extern  BOOL    useMsg   ;      /* balloon.c    */
 extern  BOOL    useSnd   ;      /* balloon.c    */
 
+char    ProfileLang[24] = "" ;  /* saved language code */
+
 /*
  * profileLoad - load option setting
  */
@@ -52,6 +54,9 @@ BOOL    profileLoad(HAB hab)
         useSnd = (BOOL) val ;
     }
 
+    PrfQueryProfileString(hini, ProgramName, "LANG", "",
+                                ProfileLang, sizeof(ProfileLang)) ;
+
     PrfCloseProfile(hini) ;
 
     TRACE("profileLoad Pos %d, Msg %d, Snd %d\n", posRatio, useMsg, useSnd) ;
@@ -81,6 +86,8 @@ void    profileSave(HAB hab)
     PrfWriteProfileData(hini, ProgramName, "USE_MSG", &val, sizeof(LONG)) ;
     val = (LONG) useSnd ;
     PrfWriteProfileData(hini, ProgramName, "USE_SND", &val, sizeof(LONG)) ;
+
+    PrfWriteProfileString(hini, ProgramName, "LANG", (PSZ) osLangCode()) ;
 
     PrfCloseProfile(hini) ;
 }

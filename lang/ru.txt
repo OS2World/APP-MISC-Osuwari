@@ -1,0 +1,32 @@
+# Osuwari Multi language file - UTF-8, KEY=value, \n = line break
+# "~" marks the mnemonic letter; for scripts without Latin letters add the Latin
+# mnemonic in parentheses, e.g. (~O).  Missing keys fall back to English.
+LANG_NAME=Русский
+LANG_ENGLISH=Russian
+FONT=Times New Roman MT 30,Droid Sans Combined
+
+MENU_OPTION=Параметры(~O)...
+MENU_LANGUAGE=Язык(~L)
+MENU_ABOUT=О программе(~A)...
+MENU_EXIT=Выход(~X)
+SET_TITLE=Сидящая Мульти - параметры
+SET_MSG=показывать сообщения
+SET_SND=использовать звуки
+SET_POS=положение сидения
+BTN_OK=OK
+BTN_CANCEL=Отмена
+ABOUT_TITLE=Сидящая Мульти для OS/2 PM, версия 1.07
+ABOUT_TEXT=Оригинальный персонаж: Leaf\n  http://leaf.aquaplus.co.jp/\nОригинальная версия для Windows (Win32)\n  http://www.vc-net.ne.jp/~yoshy/to_heart/index.html#osmulti\n  by yoshy@vc-net.ne.jp\nНа основе версии для X\n  http://www01.u-page.so-net.ne.jp/ka2/nakanita/multi/xosmulti.html\n  by nakanita@ka2.so-net.ne.jp\nВерсия для OS/2 PM находится по адресу\n  http://www.sra.co.jp/people/akira/os2/osmulti/index.html\nПорт Open Watcom и многоязычность: OS2World, 2026
+ERR_BITMAPS=Не удалось загрузить изображения
+ERR_WINDOWS=Не удалось создать окна
+B_NADE=*nade*
+B_FUNI=*funi*
+B_PSYU=*psyuuuuuu-------*
+B_NADE1=Мне так приятно!
+B_NADE2=Погладь меня ещё!
+B_NADE3=Ещё, ещё, погладь меня!
+B_NADE4=Ещё, ещё, ещё, погладь меня!
+B_FUNI1=..О! что?!..
+B_FUNI2=......
+B_FUNI3=.......
+B_FUNI4=........

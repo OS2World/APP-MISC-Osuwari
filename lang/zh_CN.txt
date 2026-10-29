@@ -1,0 +1,32 @@
+# Osuwari Multi language file - UTF-8, KEY=value, \n = line break
+# "~" marks the mnemonic letter; for scripts without Latin letters add the Latin
+# mnemonic in parentheses, e.g. (~O).  Missing keys fall back to English.
+LANG_NAME=简体中文
+LANG_ENGLISH=Chinese (Simplified)
+FONT=Droid Sans Combined,Monotype Sans Duospace WT J,Times New Roman WT J
+
+MENU_OPTION=选项(~O)...
+MENU_LANGUAGE=语言(~L)
+MENU_ABOUT=关于(~A)...
+MENU_EXIT=退出(~X)
+SET_TITLE=坐着的Multi - 选项
+SET_MSG=显示消息
+SET_SND=使用音效
+SET_POS=坐的位置
+BTN_OK=确定
+BTN_CANCEL=取消
+ABOUT_TITLE=坐着的Multi for OS/2 PM, 版本 1.07
+ABOUT_TEXT=原作角色: Leaf\n  http://leaf.aquaplus.co.jp/\n原版 Windows (Win32) 版本\n  http://www.vc-net.ne.jp/~yoshy/to_heart/index.html#osmulti\n  by yoshy@vc-net.ne.jp\n基于 X 版本\n  http://www01.u-page.so-net.ne.jp/ka2/nakanita/multi/xosmulti.html\n  by nakanita@ka2.so-net.ne.jp\nOS/2 PM 版本位于\n  http://www.sra.co.jp/people/akira/os2/osmulti/index.html\nOpen Watcom 移植与多语言支持: OS2World, 2026
+ERR_BITMAPS=无法加载位图
+ERR_WINDOWS=无法创建窗口
+B_NADE=*nade*
+B_FUNI=*funi*
+B_PSYU=*psyuuuuuu-------*
+B_NADE1=我好开心!
+B_NADE2=再多摸摸我!
+B_NADE3=再多一点,多摸摸我!
+B_NADE4=再多一点,再多一点,多摸摸我!
+B_FUNI1=..啊!什么?!..
+B_FUNI2=......
+B_FUNI3=.......
+B_FUNI4=........

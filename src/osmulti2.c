@@ -7,6 +7,8 @@
 #include <string.h>
 
 #define INCL_DOSPROCESS 
+#define INCL_DOSMISC
+#define INCL_DOSMODULEMGR
 #define INCL_PM
 #include <os2.h>
 #include "shapewin.h"
@@ -76,23 +78,20 @@ static  void    myname(PSZ me)
  * parseArgs - parse command line arguments
  */
 
-int     ProgramLang = NLS_JA ;
 BOOL    ProgramIdle = FALSE  ;
-BOOL    ProgramFull = FALSE  ;
+BOOL    ProgramFull = TRUE   ;      /* redraw the whole body for a face change */
 
 static  void    parseArgs(int ac, char *av[])
 {
     int     i ;
 
     for (i = 1 ; i < ac ; i++) {
-        if (stricmp(av[i], "ja") == 0) {
-	    ProgramLang = NLS_JA ;
-	} else if (stricmp(av[i], "en") == 0) {
-	    ProgramLang = NLS_EN ;
-	} else if (stricmp(av[i], "idle") == 0) {
+        if (stricmp(av[i], "idle") == 0) {
 	    ProgramIdle = TRUE ;
 	} else if (stricmp(av[i], "full") == 0) {
 	    ProgramFull = TRUE ;
+	} else if (stricmp(av[i], "part") == 0) {
+	    ProgramFull = FALSE ;
 	}
     }
 }
@@ -122,23 +121,28 @@ int     main(int ac, char *av[])
      */
 
     myname(av[0]) ;
+#ifdef __EMX__
     _wildcard(&ac, &av) ;
+#endif
     parseArgs(ac, av)   ;
 
     hab = WinInitialize(0) ;
     hmq = WinCreateMsgQueue(hab, 0) ;
 
     profileLoad(hab) ;
+    osLangInit(hab, ProfileLang, ac, av) ;      /* a language code on the command line wins */
 
     if (bitmapLoad(hab) != TRUE) {
-        osmMessage("failed to load Bitmaps") ;
+        osmMessage((PSZ) osTr(STR_ERR_BITMAPS)) ;
+        osLangDone() ;
         WinDestroyMsgQueue(hmq) ;
         WinTerminate(hab) ;
 	return 1 ;
     }
     if (windowCreate(hab) != TRUE) {
-        osmMessage("failed to create Windows") ;
+        osmMessage((PSZ) osTr(STR_ERR_WINDOWS)) ;
 	bitmapFree() ;
+        osLangDone() ;
         WinDestroyMsgQueue(hmq) ;
         WinTerminate(hab) ;
 	return 2 ;
@@ -162,6 +166,7 @@ int     main(int ac, char *av[])
 
     windowDispose(hab) ;
     bitmapFree() ;
+    osLangDone() ;
     
     WinDestroyMsgQueue(hmq) ;
     WinTerminate(hab) ;

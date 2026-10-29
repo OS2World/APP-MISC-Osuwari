@@ -1,0 +1,32 @@
+# Osuwari Multi language file - UTF-8, KEY=value, \n = line break
+# "~" marks the mnemonic letter; for scripts without Latin letters add the Latin
+# mnemonic in parentheses, e.g. (~O).  Missing keys fall back to English.
+LANG_NAME=English
+LANG_ENGLISH=English
+FONT=Times New Roman MT 30,Droid Sans Combined
+
+MENU_OPTION=~Options...
+MENU_LANGUAGE=~Language
+MENU_ABOUT=~About...
+MENU_EXIT=E~xit
+SET_TITLE=Sitting Multi - options
+SET_MSG=show messages
+SET_SND=use sounds
+SET_POS=sitting position
+BTN_OK=OK
+BTN_CANCEL=Cancel
+ABOUT_TITLE=Sitting Multi for OS/2 PM, Version 1.07
+ABOUT_TEXT=Original character by Leaf\n  http://leaf.aquaplus.co.jp/\nOriginal Windows (Win32) version\n  http://www.vc-net.ne.jp/~yoshy/to_heart/index.html#osmulti\n  by yoshy@vc-net.ne.jp\nBased on X version\n  http://www01.u-page.so-net.ne.jp/ka2/nakanita/multi/xosmulti.html\n  by nakanita@ka2.so-net.ne.jp\nOS/2 PM version is placed at\n  http://www.sra.co.jp/people/akira/os2/osmulti/index.html\nOpen Watcom port and multilingual support: OS2World, 2026
+ERR_BITMAPS=Failed to load the bitmaps
+ERR_WINDOWS=Failed to create the windows
+B_NADE=*nade*
+B_FUNI=*funi*
+B_PSYU=*psyuuuuuu-------*
+B_NADE1=I'm so happy!
+B_NADE2=More nade nade me!
+B_NADE3=More, More nade nade me!
+B_NADE4=More, More, More nade nade me!
+B_FUNI1=..Oh! what ?!..
+B_FUNI2=......
+B_FUNI3=.......
+B_FUNI4=........
